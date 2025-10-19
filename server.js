@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import app from './src/app.js'; // Importando o app do Express
+import app from './src/app.js';
 
 dotenv.config();
 
 // Use a URI do MongoDB Atlas no seu arquivo .env
-const mongoURI = process.env.MONGODB_URI; // Isso deve estar no arquivo .env
+const mongoURI = process.env.MONGODB_URI;
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,

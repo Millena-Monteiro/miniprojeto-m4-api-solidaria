@@ -18,12 +18,11 @@ const validarId = (req, res, next) => {
   next(); // Se o ID for válido, continue com a requisição
 };
 
-// Middleware de autenticação (exemplo básico)
 const autenticar = (req, res, next) => {
   if (!req.user) { // Supondo que req.user seja preenchido com dados do usuário autenticado
     return res.status(401).json({ mensagem: 'Usuário não autenticado.' });
   }
-  next(); // Usuário autenticado, continua
+  next();
 };
 
 // 🔍 Rota para listar todas as doações
@@ -38,5 +37,4 @@ router.put('/doacoes/:id', autenticar, validarId, editarDoacao);
 // ❌ Rota para deletar uma doação existente
 router.delete('/doacoes/:id', autenticar, validarId, deletarDoacao);
 
-// 📤 Exporta as rotas para usar no servidor principal
 export default router;

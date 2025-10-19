@@ -1,4 +1,3 @@
-// Importa o model Doacao, que representa a coleção de doações no MongoDB
 import Doacao from '../models/DoacaoModel.js';
 
 /**
@@ -9,7 +8,7 @@ export async function listarDoacoes(req, res) {
   try {
     // Busca todas as doações no banco de dados
     const doacoes = await Doacao.find();
-    // Retorna as doações em formato JSON com status 200 (OK)
+    // Retorna as doações em formato JSON com status 200
     res.status(200).json(doacoes);
   } catch (error) {
     // Em caso de erro, retorna status 500 (erro do servidor)
@@ -50,15 +49,15 @@ export async function criarDoacao(req, res) {
  * Método: PUT /doacoes/:id
  */
 export async function editarDoacao(req, res) {
-  const { id } = req.params; // ID da doação a ser atualizada
+  const { id } = req.params; 
   const { item, quantidade, nome } = req.body;
 
   try {
     // Busca e atualiza a doação pelo ID
     const doacaoAtualizada = await Doacao.findByIdAndUpdate(
-      id, // ID a ser encontrado
-      { item, quantidade, nome }, // Campos a serem atualizados
-      { new: true } // Retorna o novo documento atualizado
+      id,
+      { item, quantidade, nome },
+      { new: true }
     );
 
     // Verifica se a doação foi encontrada
@@ -72,7 +71,6 @@ export async function editarDoacao(req, res) {
       doacao: doacaoAtualizada,
     });
   } catch (error) {
-    // Em caso de erro, retorna status 500 (erro do servidor)
     res.status(500).json({ mensagem: 'Erro ao atualizar doação.', erro: error.message });
   }
 }

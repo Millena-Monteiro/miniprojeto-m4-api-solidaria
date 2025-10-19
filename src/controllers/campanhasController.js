@@ -1,15 +1,15 @@
-import Campanha from '../models/campanha.js'; // Importa o modelo de campanha
+import Campanha from '../models/campanha.js';
 
 // 📑 Função para listar todas as campanhas
 export const listarCampanhas = async (req, res) => {
   try {
     // 🗂 Busca todas as campanhas no banco de dados
     const campanhas = await Campanha.find();
-    res.status(200).json(campanhas); // Retorna as campanhas com status 200
+    res.status(200).json(campanhas); // Retorna status 200
   } catch (error) {
     res.status(500).json({
       mensagem: 'Erro ao listar campanhas.',
-      error: error.message, // 👉 Isso aqui mostra a mensagem real do erro
+      error: error.message, // 👉 Isso mostra a mensagem real do erro
     });
   }
 }
@@ -32,8 +32,8 @@ export const criarCampanha = async (req, res) => {
       dataFim
     });
 
-    await novaCampanha.save(); // Salva a nova campanha
-    res.status(201).json(novaCampanha); // Retorna a campanha criada com status 201
+    await novaCampanha.save(); // Salva nova campanha
+    res.status(201).json(novaCampanha); // Retorna campanha criada com status 201
   } catch (error) {
     res.status(500).json({ mensagem: 'Erro ao criar campanha.', error });
   }

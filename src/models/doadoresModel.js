@@ -4,17 +4,17 @@ import mongoose from 'mongoose';
 const doadorSchema = new mongoose.Schema({
   nome: {
     type: String,
-    required: true // Nome do doador é obrigatório
+    required: true
   },
   email: {
     type: String,
-    required: true, // Email do doador é obrigatório
-    unique: true, // Garante que o email não seja duplicado
+    required: true,
+    unique: true,
     match: [/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Por favor, forneça um email válido.']
   },
   telefone: {
     type: String,
-    required: true, // Telefone do doador é obrigatório
+    required: true,
     match: [/^\(?\d{2}\)?\s?\d{4,5}-\d{4}$/, 'Por favor, forneça um telefone válido.'] // Regex para telefone brasileiro
   }
 }, {timestamps:true});
@@ -22,4 +22,4 @@ const doadorSchema = new mongoose.Schema({
 // 📑 Cria o modelo de Doador com base no esquema
 const Doador = mongoose.model('Doador', doadorSchema);
 
-export default Doador; // Exporta o modelo de doador
+export default Doador;

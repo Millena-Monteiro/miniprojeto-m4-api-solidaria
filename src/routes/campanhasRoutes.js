@@ -18,12 +18,12 @@ const validarId = (req, res, next) => {
   next(); // Se o ID for válido, continue com a requisição
 };
 
-// Middleware de autenticação (exemplo básico)
+// Middleware de autenticação
 const autenticar = (req, res, next) => {
-  if (!req.user) { // Supondo que req.user seja definido após autenticação
+  if (!req.user) { 
     return res.status(401).json({ mensagem: 'Usuário não autenticado.' });
   }
-  next(); // Usuário autenticado, continua
+  next();
 };
 
 // 🔄 Rota para listar todas as campanhas

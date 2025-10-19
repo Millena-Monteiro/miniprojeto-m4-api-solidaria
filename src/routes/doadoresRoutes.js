@@ -15,15 +15,15 @@ const validarId = (req, res, next) => {
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ mensagem: 'ID inválido.' });
   }
-  next(); // Se o ID for válido, continua com a requisição
+  next();
 };
 
 // Middleware de autenticação (exemplo básico)
 const autenticar = (req, res, next) => {
-  if (!req.user) { // Supondo que req.user seja preenchido com dados do usuário autenticado
+  if (!req.user) {
     return res.status(401).json({ mensagem: 'Usuário não autenticado.' });
   }
-  next(); // Usuário autenticado, continua
+  next();
 };
 
 // 🔄 Rota para listar todos os doadores

@@ -4,11 +4,11 @@ import mongoose from 'mongoose';
 const campanhaSchema = new mongoose.Schema({
   nome: {
     type: String,
-    required: true // Nome da campanha é obrigatório
+    required: true // Obrigatório nome da campanha
   },
   descricao: {
     type: String,
-    required: true, // Descrição da campanha é obrigatória
+    required: true, // Descrição é obrigatória
     maxlength: 500 // limita o tamanho da descrição
   },
   dataInicio: {
@@ -36,4 +36,4 @@ const campanhaSchema = new mongoose.Schema({
 // 📑 Cria o modelo de Campanha com base no esquema
 const Campanha = mongoose.model('Campanha', campanhaSchema);
 
-export default Campanha; // Exporta o modelo de campanha
+export default Campanha;
